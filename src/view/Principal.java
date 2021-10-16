@@ -6,9 +6,7 @@ import model.Player;
 import model.SelectScreen;
 import model.StartScreen;
 import processing.core.PApplet;
-
 public class Principal extends PApplet{
-
 	public static void main(String[] args) {
 		PApplet.main("view.Principal");
 	}
@@ -17,17 +15,17 @@ public class Principal extends PApplet{
 	SelectScreen select;
 	IntroScreen intro;
 	GameScreen game;
-	
+
 	TCPLauncher tcp;
-	
+
 	Player player1;
 	Player player2;
-	
+
 	private int screen; //0 menu, 1 select, 2 intro, 3 game
 	private int gameScreen;
-	
+
 	private String accion;
-	
+
 	@Override
 	public void settings() {
 		size(1280,720);
@@ -44,14 +42,14 @@ public class Principal extends PApplet{
 		
 		player1 = new Player(this, 200, 620);
 		player2 = new Player(this, 1100, 620);
-		
+
 		gameScreen = (int) random(3); // random for random map
-		
+
 		 tcp = TCPLauncher.getInstance();
 		 tcp.setObserver(this);
          tcp.start();
 	}
-	
+
 	@Override
 	public void draw() {
 		background(255);	
@@ -72,12 +70,10 @@ public class Principal extends PApplet{
 			player1.draw(0);
 			player2.draw(0);
 			break;
-
 		default:
 			break;
 		}
 	}
-
 	
 	@Override
 	public void keyPressed() {
@@ -121,9 +117,9 @@ public class Principal extends PApplet{
 	
 	@Override
 	public void mouseReleased() {
-		
+
 	}
-	
+
 	public void msgRecibido(int id, String msg) {
 		accion = id + ":" + msg;
 	}
