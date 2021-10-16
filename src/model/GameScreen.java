@@ -6,6 +6,7 @@ import processing.core.PImage;
 public class GameScreen {
 	
 	PImage temple, ship, pyramid;
+	PImage vidas;
 	private PApplet app;
 	
 	public GameScreen(PApplet app) {
@@ -14,6 +15,8 @@ public class GameScreen {
 		temple = app.loadImage("temple.jpg");
 		ship = app.loadImage("ship.jpg");
 		pyramid = app.loadImage("pyramid.jpg");
+		
+		vidas = app.loadImage("data/lifeui.png");
 		
 	}
 	

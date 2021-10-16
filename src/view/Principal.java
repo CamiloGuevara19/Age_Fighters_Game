@@ -6,6 +6,7 @@ import model.Player;
 import model.SelectScreen;
 import model.StartScreen;
 import processing.core.PApplet;
+import processing.core.PImage;
 public class Principal extends PApplet{
 	public static void main(String[] args) {
 		PApplet.main("view.Principal");
@@ -20,6 +21,8 @@ public class Principal extends PApplet{
 
 	Player player1;
 	Player player2;
+	
+	PImage p1, p2, pinktext1, pinktext2; //UI images
 
 	private int screen; //0 menu, 1 select, 2 intro, 3 game
 	private int gameScreen;
@@ -35,6 +38,12 @@ public class Principal extends PApplet{
 	
 	@Override
 	public void setup() {
+		
+		//UI KIT
+		p1 = loadImage("data/P1.png");
+		p2 = loadImage("data/P2.png");
+		pinktext1 = loadImage("data/pinktext.png");
+		pinktext2 = loadImage("data/pinktext2.png");
 		
 		screen = 0;
 		start = new StartScreen(this);
