@@ -1,4 +1,5 @@
 package view;
+
 import model.GameScreen;
 import model.IntroScreen;
 import model.Player;
@@ -17,11 +18,15 @@ public class Principal extends PApplet{
 	IntroScreen intro;
 	GameScreen game;
 	
+	TCPLauncher tcp;
+	
 	Player player1;
 	Player player2;
 	
 	private int screen; //0 menu, 1 select, 2 intro, 3 game
 	private int gameScreen;
+	
+	private String accion;
 	
 	@Override
 	public void settings() {
@@ -41,6 +46,10 @@ public class Principal extends PApplet{
 		player2 = new Player(this, 1100, 620);
 		
 		gameScreen = (int) random(3); // random for random map
+		
+		 tcp = TCPLauncher.getInstance();
+		 tcp.setObserver(this);
+         tcp.start();
 	}
 	
 	@Override
@@ -113,6 +122,10 @@ public class Principal extends PApplet{
 	@Override
 	public void mouseReleased() {
 		
+	}
+	
+	public void msgRecibido(int id, String msg) {
+		accion = id + ":" + msg;
 	}
 
 	}
