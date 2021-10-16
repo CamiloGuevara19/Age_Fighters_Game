@@ -37,8 +37,8 @@ public class Principal extends PApplet{
 		intro = new IntroScreen(this);
 		game = new GameScreen(this);
 		
-		player1 = new Player(this, 200, 560);
-		player2 = new Player(this, 1000, 560);
+		player1 = new Player(this, 200, 620);
+		player2 = new Player(this, 1100, 620);
 		
 		gameScreen = (int) random(3); // random for random map
 	}

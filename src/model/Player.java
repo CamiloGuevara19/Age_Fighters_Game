@@ -17,6 +17,7 @@ public class Player {
 	
 	public void draw(int characterSelect) {
 		
+		app.ellipseMode(app.CENTER);
 		app.fill(255);
 		app.ellipse(x, y, 100, 100);
 		
