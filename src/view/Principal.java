@@ -26,9 +26,10 @@ public class Principal extends PApplet{
 
 	private int screen; //0 menu, 1 select, 2 intro, 3 game
 	private int gameScreen;
-
+	private int p1C=0, p2C=0;
 	private boolean player1ok,player2ok;
-
+	boolean gameOver = false;
+	private int xp1 = 194,xp2 = 194;
 	private String accion;
 
 	@Override
@@ -54,6 +55,7 @@ public class Principal extends PApplet{
 		player1ok = false;
 		player2ok = false;
 		
+		
 		player1 = new Player(this, 200, 620);
 		player2 = new Player(this, 1100, 620);
 
@@ -74,27 +76,68 @@ public class Principal extends PApplet{
 			start.draw();
 			if(accion.equals("1:pink")) {player1ok=true;}
 			if(accion.equals("2:pink")) {player2ok=true;}
-			if(player1ok==true&&player2ok==true) {screen=1;}
+			if(player1ok==true&&player2ok==true) {
+				screen=1;
+				player1ok=false; 
+				player2ok=false;}
+			
 			break;
 		case 1:
 			select.draw();
+		//controles
+			if(accion.equals("1:right")){p1C++;}
+			if(accion.equals("1:left")){p1C--;}
+			if(accion.equals("2:right")){p2C++;}
+			if(accion.equals("2:left")){p2C--;}
+		//selector img y condicionales
+			 image(p1, xp1, 170);
+			 image(p2, xp2, 170);
+			 if(p1C>2) {p1C=0;} if(p2C>2) {p2C=0;}
+			 if(p1C<0) {p1C=2;} if(p2C<0) {p2C=2;}
+			 if(p1C==0) {xp1=194;} if(p2C==0) {xp2=194;}
+			 if(p1C==1) {xp1=640;} if(p2C==1) {xp2=640;}
+			 if(p1C==2) {xp1=1097;} if(p2C==2) {xp2=1097;}
+			 //continuar
+				if(accion.equals("1:pink")) {player1ok=true;}
+				if(accion.equals("2:pink")) {player2ok=true;}
+				if(player1ok==true&&player2ok==true) {
+					screen=2;
+					player1ok=false; 
+					player2ok=false;}
 			break;
 		case 2:
 			intro.draw();
 			if(accion.equals("1:pink")) {player1ok=true;}
 			if(accion.equals("2:pink")) {player2ok=true;}
-			if(player1ok==true&&player2ok==true) {screen=3;}
+			if(player1ok==true&&player2ok==true) {
+				screen=3;
+				player1ok=false; 
+				player2ok=false;}
 			break;
 		case 3:
 			game.draw(gameScreen);
-			player1.draw(0);
-			player2.draw(0);
+			player1.draw(p1C);
+			player2.draw(p2C);
+			
+			if(gameOver==true) {
+				if(accion.equals("1:pink")) {player1ok=true;}
+				if(accion.equals("2:pink")) {player2ok=true;}
+				if(player1ok==true&&player2ok==true) {
+					reset();
+					player1ok=false; 
+					player2ok=false;}
+			}
 			break;
 		default:
 			break;
 		}
 	}
 	
+	private void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	@Override
 	public void keyPressed() {
 		
