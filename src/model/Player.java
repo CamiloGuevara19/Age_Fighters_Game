@@ -3,7 +3,19 @@ package model;
 import processing.core.PApplet;
 import processing.core.PImage;
 
-public class Player {
+public class Player implements Runnable{
+	
+	public final static String WALK = "walk";
+	public final static String JUMP = "jump";
+	public final static String FALL = "fall";
+	public final static String DEFAULT = "default";
+	public final static String ATTACK = "attack";
+	public final static String BLOCK = "block";
+	
+	private String action;
+	private Boolean rightAn;
+	
+	private int jumpTimer, runTimer, fallTimer, attackTimer;
 	
 	//images azteck 
 	private PImage A;
@@ -48,12 +60,21 @@ public class Player {
 	private PImage[] SSD;
 	
 	private PApplet app;
-	private int x, y;
+	private int posX, posY;
 	
-	public Player(PApplet app, int x, int y) {
+	public Player(PApplet app, int posX, int posY) {
+		
 		this.app = app;
-		this.x = x;
-		this.y = y;
+		this.posX = posX;
+		this.posY = posY;
+		
+		action = DEFAULT;
+		rightAn = true;
+		
+		jumpTimer = 0;
+		runTimer = 0;
+		fallTimer = 0;
+		attackTimer = 0;
 		
 		AA = new PImage[3];
 		AAD = new PImage[3];
@@ -88,12 +109,37 @@ public class Player {
 		
 		app.ellipseMode(app.CENTER);
 		app.fill(255);
-		app.ellipse(x, y, 100, 100);
+		app.ellipse(posX, posY, 100, 100);
 		
 		//Player 1
 		switch (characterSelect) { // 0 samurai, 1 pirate, 2 azteck
 		
 		case 0:
+			
+			switch (action) { //Different animations for samurai
+			
+			case DEFAULT:
+				
+				break;
+			case JUMP:
+				
+				break;
+			case FALL:
+				
+				break;
+			case WALK:
+				
+				break;
+			case ATTACK:
+				
+				break;
+			case BLOCK:
+				
+				break;
+
+			default:
+				break;
+			}
 			
 			break;
 		case 1:
@@ -127,6 +173,408 @@ public class Player {
 		}
 	}
 	
+	@Override
+	public void run() {
+		
+	}
+	
+	private void jumpAnimationAzteck() {
+		
+		if(rightAn == false) {
+			if (jumpTimer >= 0 && jumpTimer < 20) {
+				app.image(AS[0], posX, posY);
+			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+				app.image(AS[1], posX, posY);
+			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+				app.image(AS[2], posX, posY);
+			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+				app.image(ACA[0], posX, posY);
+			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+				app.image(ACA[1], posX, posY);
+			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+				app.image(ACA[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (jumpTimer >= 0 && jumpTimer < 20) {
+				app.image(ASD[0], posX, posY);
+			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+				app.image(ASD[1], posX, posY);
+			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+				app.image(ASD[2], posX, posY);
+			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+				app.image(ACAD[0], posX, posY);
+			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+				app.image(ACAD[1], posX, posY);
+			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+				app.image(ACAD[2], posX, posY);
+			}
+		}
+		
+		jumpTimer++;
+		
+		if(jumpTimer>120) {
+			jumpTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void jumpAnimationPirate() {
+		
+		if(rightAn == false) {
+			if (jumpTimer >= 0 && jumpTimer < 20) {
+				app.image(PS[0], posX, posY);
+			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+				app.image(PS[1], posX, posY);
+			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+				app.image(PS[2], posX, posY);
+			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+				app.image(PS[2], posX, posY);
+			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+				app.image(PS[1], posX, posY);
+			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+				app.image(PS[0], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (jumpTimer >= 0 && jumpTimer < 20) {
+				app.image(PSD[0], posX, posY);
+			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+				app.image(PSD[1], posX, posY);
+			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+				app.image(PSD[2], posX, posY);
+			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+				app.image(PSD[2], posX, posY);
+			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+				app.image(PSD[1], posX, posY);
+			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+				app.image(PSD[0], posX, posY);
+			}
+		}
+		
+		jumpTimer++;
+		
+		if(jumpTimer>120) {
+			jumpTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void jumpAnimationSamurai() {
+		
+		if(rightAn == false) {
+			if (jumpTimer >= 0 && jumpTimer < 20) {
+				app.image(SS[0], posX, posY);
+			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+				app.image(SS[1], posX, posY);
+			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+				app.image(SS[2], posX, posY);
+			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+				app.image(SCA[0], posX, posY);
+			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+				app.image(SCA[1], posX, posY);
+			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+				app.image(SCA[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (jumpTimer >= 0 && jumpTimer < 20) {
+				app.image(SSD[0], posX, posY);
+			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+				app.image(SSD[1], posX, posY);
+			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+				app.image(SSD[2], posX, posY);
+			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+				app.image(SCAD[0], posX, posY);
+			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+				app.image(SCAD[1], posX, posY);
+			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+				app.image(SCAD[2], posX, posY);
+			}
+		}
+		
+		jumpTimer++;
+		
+		if(jumpTimer>120) {
+			jumpTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void walkAnimationAzteck() {
+		
+		if(rightAn == false) {
+			if (runTimer >= 0 && runTimer < 10) {
+				app.image(AC[0], posX, posY);
+			}else if(runTimer >= 10 && runTimer < 20) {
+				app.image(AC[1], posX, posY);
+			}else if(runTimer >= 20 && runTimer < 30) {
+				app.image(AC[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (runTimer >= 0 && runTimer < 10) {
+				app.image(ACD[0], posX, posY);
+			}else if(runTimer >= 10 && runTimer < 20) {
+				app.image(ACD[1], posX, posY);
+			}else if(runTimer >= 20 && runTimer < 30) {
+				app.image(ACD[2], posX, posY);
+			}
+		}
+		
+		runTimer++;
+		
+		if(runTimer>30) {
+			runTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void walkAnimationPirate() {
+		
+		if(rightAn == false) {
+			if (runTimer >= 0 && runTimer < 10) {
+				app.image(PC[0], posX, posY);
+			}else if(runTimer >= 10 && runTimer < 20) {
+				app.image(PC[1], posX, posY);
+			}else if(runTimer >= 20 && runTimer < 30) {
+				app.image(PC[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (runTimer >= 0 && runTimer < 10) {
+				app.image(PCD[0], posX, posY);
+			}else if(runTimer >= 10 && runTimer < 20) {
+				app.image(PCD[1], posX, posY);
+			}else if(runTimer >= 20 && runTimer < 30) {
+				app.image(PCD[2], posX, posY);
+			}
+		}
+		
+		runTimer++;
+		
+		if(runTimer>30) {
+			runTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void walkAnimationSamurai() {
+		
+		if(rightAn == false) {
+			if (runTimer >= 0 && runTimer < 10) {
+				app.image(SC[0], posX, posY);
+			}else if(runTimer >= 10 && runTimer < 20) {
+				app.image(SC[1], posX, posY);
+			}else if(runTimer >= 20 && runTimer < 30) {
+				app.image(SC[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (runTimer >= 0 && runTimer < 10) {
+				app.image(SCD[0], posX, posY);
+			}else if(runTimer >= 10 && runTimer < 20) {
+				app.image(SCD[1], posX, posY);
+			}else if(runTimer >= 20 && runTimer < 30) {
+				app.image(SCD[2], posX, posY);
+			}
+		}
+		
+		runTimer++;
+		
+		if(runTimer>30) {
+			runTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void fallAnimationAzteck() {
+		
+		if(rightAn == false) {
+			if (fallTimer >= 0 && fallTimer < 10) {
+				app.image(ACA[0], posX, posY);
+			}else if(fallTimer >= 10 && fallTimer < 20) {
+				app.image(ACA[1], posX, posY);
+			}else if(fallTimer >= 20 && fallTimer < 30) {
+				app.image(ACA[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (fallTimer >= 0 && fallTimer < 10) {
+				app.image(ACAD[0], posX, posY);
+			}else if(fallTimer >= 10 && fallTimer < 20) {
+				app.image(ACAD[1], posX, posY);
+			}else if(fallTimer >= 20 && fallTimer < 30) {
+				app.image(ACAD[2], posX, posY);
+			}
+		}
+		
+		fallTimer++;
+		
+		if(fallTimer>30) {
+			fallTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void fallAnimationPirate() {
+		
+		if(rightAn == false) {
+			if (fallTimer >= 0 && fallTimer < 10) {
+				app.image(PS[2], posX, posY);
+			}else if(fallTimer >= 10 && fallTimer < 20) {
+				app.image(PS[1], posX, posY);
+			}else if(fallTimer >= 20 && fallTimer < 30) {
+				app.image(PS[0], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (fallTimer >= 0 && fallTimer < 10) {
+				app.image(PSD[2], posX, posY);
+			}else if(fallTimer >= 10 && fallTimer < 20) {
+				app.image(PSD[1], posX, posY);
+			}else if(fallTimer >= 20 && fallTimer < 30) {
+				app.image(PSD[0], posX, posY);
+			}
+		}
+		
+		fallTimer++;
+		
+		if(fallTimer>30) {
+			fallTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void fallAnimationSamurai() {
+		
+		if(rightAn == false) {
+			if (fallTimer >= 0 && fallTimer < 10) {
+				app.image(SCA[0], posX, posY);
+			}else if(fallTimer >= 10 && fallTimer < 20) {
+				app.image(SCA[1], posX, posY);
+			}else if(fallTimer >= 20 && fallTimer < 30) {
+				app.image(SCA[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (fallTimer >= 0 && fallTimer < 10) {
+				app.image(SCAD[0], posX, posY);
+			}else if(fallTimer >= 10 && fallTimer < 20) {
+				app.image(SCAD[1], posX, posY);
+			}else if(fallTimer >= 20 && fallTimer < 30) {
+				app.image(SCAD[2], posX, posY);
+			}
+		}
+		
+		fallTimer++;
+		
+		if(fallTimer>30) {
+			fallTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void attackAnimationAzteck() {
+		
+		if(rightAn == false) {
+			if (attackTimer >= 0 && attackTimer < 10) {
+				app.image(AA[0], posX, posY);
+			}else if(attackTimer >= 10 && attackTimer < 20) {
+				app.image(AA[1], posX, posY);
+			}else if(attackTimer >= 20 && attackTimer < 30) {
+				app.image(AA[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (attackTimer >= 0 && attackTimer < 10) {
+				app.image(AAD[0], posX, posY);
+			}else if(attackTimer >= 10 && attackTimer < 20) {
+				app.image(AAD[1], posX, posY);
+			}else if(attackTimer >= 20 && attackTimer < 30) {
+				app.image(AAD[2], posX, posY);
+			}
+		}
+		
+		attackTimer++;
+		
+		if(attackTimer>30) {
+			attackTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void attackAnimationPirate() {
+		
+		if(rightAn == false) {
+			if (attackTimer >= 0 && attackTimer < 10) {
+				app.image(PA[0], posX, posY);
+			}else if(attackTimer >= 10 && attackTimer < 20) {
+				app.image(PA[1], posX, posY);
+			}else if(attackTimer >= 20 && attackTimer < 30) {
+				app.image(PA[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (attackTimer >= 0 && attackTimer < 10) {
+				app.image(PAD[0], posX, posY);
+			}else if(attackTimer >= 10 && attackTimer < 20) {
+				app.image(PAD[1], posX, posY);
+			}else if(attackTimer >= 20 && attackTimer < 30) {
+				app.image(PAD[2], posX, posY);
+			}
+		}
+		
+		attackTimer++;
+		
+		if(attackTimer>30) {
+			attackTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+	private void attackAnimationSamurai() {
+		
+		if(rightAn == false) {
+			if (attackTimer >= 0 && attackTimer < 10) {
+				app.image(SA[0], posX, posY);
+			}else if(attackTimer >= 10 && attackTimer < 20) {
+				app.image(SA[1], posX, posY);
+			}else if(attackTimer >= 20 && attackTimer < 30) {
+				app.image(SA[2], posX, posY);
+			}
+		}
+		
+		if(rightAn == true) {
+			if (attackTimer >= 0 && attackTimer < 10) {
+				app.image(SAD[0], posX, posY);
+			}else if(attackTimer >= 10 && attackTimer < 20) {
+				app.image(SAD[1], posX, posY);
+			}else if(attackTimer >= 20 && attackTimer < 30) {
+				app.image(SAD[2], posX, posY);
+			}
+		}
+		
+		attackTimer++;
+		
+		if(attackTimer>30) {
+			attackTimer = 0;
+			action = DEFAULT;
+		}
+	}
+	
+//---------------------------------------------------------------------------------------------------------------//	
 	public void loadImages() {
 		//load asteck images
 		A = app.loadImage("data/A.png");
@@ -221,5 +669,7 @@ public class Player {
 			SSD[i] = app.loadImage("data/SSD"+(i+1)+".png");
 		}
 	}
+	
+	
 
 }
