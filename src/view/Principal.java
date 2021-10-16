@@ -24,6 +24,8 @@ public class Principal extends PApplet{
 	private int screen; //0 menu, 1 select, 2 intro, 3 game
 	private int gameScreen;
 
+	private boolean player1ok,player2ok;
+
 	private String accion;
 
 	@Override
@@ -39,6 +41,9 @@ public class Principal extends PApplet{
 		select = new SelectScreen(this);
 		intro = new IntroScreen(this);
 		game = new GameScreen(this);
+		
+		player1ok = false;
+		player2ok = false;
 		
 		player1 = new Player(this, 200, 620);
 		player2 = new Player(this, 1100, 620);
@@ -58,12 +63,18 @@ public class Principal extends PApplet{
 		
 		case 0:
 			start.draw();
+			if(accion.equals("1:pink")) {player1ok=true;}
+			if(accion.equals("2:pink")) {player2ok=true;}
+			if(player1ok==true&&player2ok==true) {screen=1;}
 			break;
 		case 1:
 			select.draw();
 			break;
 		case 2:
 			intro.draw();
+			if(accion.equals("1:pink")) {player1ok=true;}
+			if(accion.equals("2:pink")) {player2ok=true;}
+			if(player1ok==true&&player2ok==true) {screen=3;}
 			break;
 		case 3:
 			game.draw(gameScreen);
