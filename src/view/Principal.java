@@ -22,7 +22,7 @@ public class Principal extends PApplet{
 	Player player1;
 	Player player2;
 	
-	PImage p1, p2, pinktext1, pinktext2; //UI images
+	PImage p1, p2, pinktext1, pinktext2, pinktext3; //UI images
 
 	private int screen; //0 menu, 1 select, 2 intro, 3 game
 	private int gameScreen;
@@ -45,6 +45,7 @@ public class Principal extends PApplet{
 		p2 = loadImage("data/P2.png");
 		pinktext1 = loadImage("data/pinktext.png");
 		pinktext2 = loadImage("data/pinktext2.png");
+		pinktext3 = loadImage("data/pinktext3.png");
 		
 		rectMode(CORNER);
 		screen = 0;
@@ -143,7 +144,9 @@ public class Principal extends PApplet{
 				
 			//poner cartel de reiniciar
 			if(gameOver==true) {
-				
+				fill(0, 0, 0, 1);
+				rect(0, 0, 1280, 720);
+				image(pinktext3, 640, 360, 400, 50);
 			}
 			
 		
