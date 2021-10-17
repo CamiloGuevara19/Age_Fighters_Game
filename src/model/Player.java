@@ -794,44 +794,66 @@ public class Player implements Runnable{
 				gravity+=gravity/2;
 				fallTime=0;
 			}
-		}else {
+		}if(caer = false) {
 			gravity = 0;
 			jumpFactor = 0;
 		}
 		
 		
-		if(player.getPosY()>=623) {
+		if(player.getPosY()<=623) {
+		
+			//segunda pltaforma
+			if(player.getPosX()>665&&player.getPosX()<1105) {
+				if(player.getPosY()>=425&&player.getPosY()<=470) {
+					if(accion.equals("down")) {
+						caer = true;}else {caer = false;
+						player.setPosY(425);}
+				}
+			}else {
+			
+			
+			//tercera pltaforma
+			if(player.getPosX()>395&&player.getPosX()<885) {
+				if(player.getPosY()>=223&&player.getPosY()<=273) {
+					if(accion.equals("down")) {
+						caer = true;}else {caer = false;
+						player.setPosY(223);}
+					}}else {
+			
+			
+			//primera pltarforma
+			if(player.getPosX()>125&&player.getPosX()<615) {
+				if(player.getPosY()>=425&&player.getPosY()<=470) {
+					if(accion.equals("down")) {
+					caer = true;}else {caer = false;
+					player.setPosY(425);
+					}
+				
+			}
+			
+				
+			}else {
+				caer = true;
+			}
+			
+					}
+			
+			}
+		}else {
+			
+			
 			player.setPosY(623);
 			//if(player.getAction().equals("FALL")) {
 			//player.setAction("DEFAULT");}
 			caer = false;
-		}
 		
-		//segunda pltaforma
-		if(player.getPosX()>665&&player.getPosX()<1105) {
-			if(player.getPosY()>=425&&player.getPosY()<=470) {
-				if(!accion.equals("down")) {
-					caer = false;}else {caer = true;}
-			}
+		
 		}
 		
 		
-		//tercera pltaforma
-		if(player.getPosX()>395&&player.getPosX()<885) {
-			if(player.getPosY()>=223&&player.getPosY()<=273) {
-				if(!accion.equals("down")) {
-					caer = false;}else {caer = true;}
-				}}
 		
 		
-		//primera pltarforma
-		if(player.getPosX()>125&&player.getPosX()<615) {
-			if(player.getPosY()>=425&&player.getPosY()<=470) {
-				if(!accion.equals("down")) {
-				caer = false;}else {caer = true;}
-			}
-		}
-		
+	
 		if(playerJump==true) {
 			jumpFactor = -10;
 			gravity = 3;
@@ -839,8 +861,7 @@ public class Player implements Runnable{
 		}else {jumpFactor=0;
 		gravity = 10;}
 		
-		System.out.print(caer);
-		System.out.print(player.getPosY());
+		
 		
 	}
 	
