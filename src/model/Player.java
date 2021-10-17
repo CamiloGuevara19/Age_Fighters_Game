@@ -61,7 +61,7 @@ public class Player implements Runnable{
 	
 	private PApplet app;
 	private int posX, posY;
-	private int health = 60;
+	private int health = 80;
 	
 	public Player(PApplet app, int posX, int posY) {
 		

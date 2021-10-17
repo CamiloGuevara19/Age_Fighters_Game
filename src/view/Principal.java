@@ -46,6 +46,7 @@ public class Principal extends PApplet{
 		pinktext1 = loadImage("data/pinktext.png");
 		pinktext2 = loadImage("data/pinktext2.png");
 		
+		rectMode(CORNER);
 		screen = 0;
 		start = new StartScreen(this);
 		select = new SelectScreen(this);
@@ -105,6 +106,10 @@ public class Principal extends PApplet{
 			game.draw(gameScreen);
 			player1.draw(p1C);
 			player2.draw(p2C);
+			fill(255,0,0);
+			rectMode(CORNER);
+			rect(549, 26,-(400-(player1.getHealth()*5) ), 50);
+			rect(730, 26,(400-(player2.getHealth()*5) ), 50);
 			
 			
 			
@@ -119,22 +124,34 @@ public class Principal extends PApplet{
 			//gravedad(player1,p1caer,p1jump);
 			//gravedad(player2,p2caer,p2jump);
 			
-			
-			
-					
-					
-				
-				
-			
-			
-			if(gameOver==true) {
-				if(accion.equals("1:pink")) {player1ok=true;}
-				if(accion.equals("2:pink")) {player2ok=true;}
-				if(player1ok==true&&player2ok==true) {
-					reset();
-					player1ok=false; 
-					player2ok=false;}
+			//salud
+			if(player1.getHealth()<0) {
+				player1.setHealth(0);
 			}
+			
+			if(player2.getHealth()<0) {
+				player2.setHealth(0);
+			}
+			
+			//golpes
+			isHitted(player1, player2);
+			isHitted(player2, player1);
+			
+			//gameover
+			
+			if(player1.getHealth()<=0||player2.getHealth()<=0) {gameOver=true;}
+				
+			//poner cartel de reiniciar
+			if(gameOver==true) {
+				
+			}
+			
+		
+			
+				
+				
+			
+		
 			break;
 		default:
 			break;
@@ -143,6 +160,13 @@ public class Principal extends PApplet{
 	
 	private void reset() {
 		// TODO Auto-generated method stub
+
+		player1 = new Player(this, 200, 620);
+		player2 = new Player(this, 1100, 620);
+		player2.setRightAn(false);
+		gameOver = false;
+		
+		
 		
 	}
 
@@ -201,7 +225,7 @@ public class Principal extends PApplet{
 	public void mousePressed() {
 		
 //--------------------BUTTONS--------------------//
-		
+		System.out.println(mouseX+":"+mouseY);
 		// StartScreen --> SelectScreen
 		if (screen == 0 && mouseX > (621 - (209 / 2))
 				&& mouseX < (621 + (209 / 2))
@@ -228,7 +252,7 @@ public class Principal extends PApplet{
 	}
 	
 
-	public void msgRecibido(int id, String msg) {
+	public void msgRecibido(int id, String msg,Session s) {
 		accion = id + ":" + msg;
 switch (screen) {
 		
@@ -272,6 +296,7 @@ switch (screen) {
 			break;
 		case 3:
 			
+			if(gameOver==false) {
 			
 			//animaciones
 			
@@ -331,13 +356,14 @@ switch (screen) {
 				player2.setAction("JUMP");
 				p2jump= false;
 				
-			}
+			}}
 			
 			
 			if(gameOver==true) {
+				s.sendMsg(ganador(id));
 				if(accion.equals("1:pink")) {player1ok=true;}
 				if(accion.equals("2:pink")) {player2ok=true;}
-				if(player1ok==true&&player2ok==true) {
+				if(player1ok==true) {
 					reset();
 					player1ok=false; 
 					player2ok=false;}
@@ -349,5 +375,45 @@ switch (screen) {
 		
 	}
 
+	public void isHitted(Player hitted,Player hitter) {
+		if(hitter.getAction().equals("ATTACK")) {
+			if(hitter.getRightAn()==true) {
+				if(hitted.getPosX()>hitter.getPosX()&&hitted.getPosX()<hitter.getPosX()+150
+					&&hitted.getPosY()>hitter.getPosY()-50&&hitted.getPosY()<hitter.getPosY()+50) {
+					if(hitted.getAction().equals("BLOCK")) {hitted.setHealth(hitted.getHealth()-2);}
+					if(!hitted.getAction().equals("BLOCK")) {hitted.setHealth(hitted.getHealth()-2);}
+				}
+			}
+		}
+		
+		if(hitter.getAction().equals("ATTACK")) {
+			if(hitter.getRightAn()==false) {
+				if(hitted.getPosX()<hitter.getPosX()&&hitted.getPosX()>hitter.getPosX()-150
+					&&hitted.getPosY()>hitter.getPosY()-50&&hitted.getPosY()<hitter.getPosY()+50) {
+					if(hitted.getAction().equals("BLOCK")) {hitted.setHealth(hitted.getHealth()-2);}
+					if(!hitted.getAction().equals("BLOCK")) {hitted.setHealth(hitted.getHealth()-2);}
+				}
+			}
+		}
+	}
+	
+	
+	public String ganador(int id) {
+		String mensaje = null;
+		if(player1.getHealth()<=0) {
+			if(id==1) {mensaje = "perdiste";}
+			if(id==2) {mensaje ="ganaste";}
+		}
+		
+		if(player2.getHealth()<=0) {
+			if(id==1) {mensaje ="ganaste";}
+			if(id==2) {mensaje ="perdiste";}
+		}
+		
+		return mensaje;
+	}
+	
+	
+	
 	}
 

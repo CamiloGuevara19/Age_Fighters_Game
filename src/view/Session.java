@@ -46,7 +46,7 @@ public class Session extends Thread{
 	                    } catch (IOException e) {
 	                        e.printStackTrace();
 	                    }
-
+	                    
 	                }
 	        ).start();
 			
@@ -54,8 +54,9 @@ public class Session extends Thread{
 			
 			while(true) {
 				String line = reader.readLine();
-				observer.msgRecibido(number,line);
-				System.out.println(line);}
+				observer.msgRecibido(number,line, this);
+				System.out.println(line);
+				sendMsg(observer.ganador(number));}
 			
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
@@ -67,8 +68,10 @@ public class Session extends Thread{
 	        new Thread(
 	                ()->{
 	                    try {
+	                    	if(msg!=null) {
 	                        writer.write(msg+"\n");
-	                        writer.flush();
+	                        writer.flush();}
+	                        System.out.println(msg);
 	                    } catch (IOException e) {
 	                        e.printStackTrace();
 	                    }
