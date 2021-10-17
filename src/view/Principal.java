@@ -27,7 +27,7 @@ public class Principal extends PApplet{
 	private int screen; //0 menu, 1 select, 2 intro, 3 game
 	private int gameScreen;
 	private int p1C=0, p2C=0;
-	private boolean player1ok,player2ok;
+	private boolean player1ok,player2ok,p1caer,p2caer,p1jump,p2jump;
 	boolean gameOver = false;
 	private int xp1 = 194,xp2 = 194;
 	private String accion;
@@ -54,6 +54,10 @@ public class Principal extends PApplet{
 		
 		player1ok = false;
 		player2ok = false;
+		p1caer = false;
+		p2caer = false; 
+		p1jump = false;
+		p2jump = false;
 		
 		
 		player1 = new Player(this, 200, 620);
@@ -82,6 +86,161 @@ public class Principal extends PApplet{
 		
 		case 0:
 			start.draw();
+		
+			
+			break;
+		case 1:
+			select.draw();
+		
+		//selector img y condicionales
+			 image(p1, xp1, 170);
+			 image(p2, xp2, 170);
+			
+			
+			break;
+		case 2:
+			intro.draw();
+			
+			break;
+		case 3:
+			game.draw(gameScreen);
+			player1.draw(p1C);
+			player2.draw(p2C);
+			
+			
+			
+			
+		
+			
+		
+			
+			//logica
+			
+			//caer
+			gravedad(player1,p1caer,p1jump);
+			gravedad(player2,p2caer,p2jump);
+			
+			
+			
+					
+					
+				
+				
+			
+			
+			if(gameOver==true) {
+				if(accion.equals("1:pink")) {player1ok=true;}
+				if(accion.equals("2:pink")) {player2ok=true;}
+				if(player1ok==true&&player2ok==true) {
+					reset();
+					player1ok=false; 
+					player2ok=false;}
+			}
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private void reset() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	private void gravedad(Player player,boolean caer, boolean playerJump) {
+		if(playerJump==false) {
+		//colisiones
+		if(player.getPosY()<620) {
+		if(player.getPosY()>620) {
+			caer =false;
+		}else {
+			
+			//primera pltarforma
+			if(player.getPosX()>125&&player.getPosX()<615) {
+				if(player.getPosY()>=450&&player.getPosY()>=425) {
+					if(!accion.equals("down")) {
+					caer = false;}
+				}
+			}else {
+			
+			//segunda pltaforma
+				if(player.getPosX()>665&&player.getPosX()<615) {
+					if(player.getPosY()>=450&&player.getPosY()>=425) {
+						if(!accion.equals("down")) {
+							caer = false;}
+					}
+				}else {
+					//tercera pltaforma
+					if(player.getPosX()>395&&player.getPosX()<885) {
+						if(player.getPosY()>=248&&player.getPosY()>=223) {
+							if(!accion.equals("down")) {
+								caer = false;}}}
+					else {
+								caer = true;	
+								}
+					
+				}
+			}
+				
+			
+		}
+		if(caer = true) {
+			player.setAction("FALL");
+			player.setPosY(player.getPosY()+3);
+		}else {
+			player.setPosY(player.getPosY());
+		}}
+		if(player.getPosY()>620) {
+			player.setPosY(623);
+		}}
+		
+		
+		
+		
+		
+		System.out.print(caer);
+		System.out.print(player.getPosY());
+		
+	}
+	
+	@Override
+	public void mousePressed() {
+		
+//--------------------BUTTONS--------------------//
+		
+		// StartScreen --> SelectScreen
+		if (screen == 0 && mouseX > (621 - (209 / 2))
+				&& mouseX < (621 + (209 / 2))
+				&& mouseY > (543 - (50 / 2))
+				&& mouseY < (543 + (50 / 2))) {
+			screen = 1;
+		}
+		
+		// SelectScreen --> IntroScreen
+		if (screen == 1 && mouseX > (640 - (110 / 2))
+				&& mouseX < (640 + (110 / 2))
+				&& mouseY > (619 - (50 / 2))
+				&& mouseY < (619 + (50 / 2))) {
+			screen = 2;
+		}
+		
+		// IntroScreen --> GameScreen
+		if (screen == 2 && mouseX > (640 - (110 / 2))
+				&& mouseX < (640 + (110 / 2))
+				&& mouseY > (568 - (50 / 2))
+				&& mouseY < (568 + (50 / 2))) {
+			screen = 3;
+		}
+	}
+	
+
+	public void msgRecibido(int id, String msg) {
+		accion = id + ":" + msg;
+switch (screen) {
+		
+		
+		case 0:
 			if(accion.equals("1:pink")) {player1ok=true;}
 			if(accion.equals("2:pink")) {player2ok=true;}
 			if(player1ok==true) {
@@ -91,15 +250,12 @@ public class Principal extends PApplet{
 			
 			break;
 		case 1:
-			select.draw();
 		//controles
 			if(accion.equals("1:right")){p1C++;}
 			if(accion.equals("1:left")){p1C--;}
 			if(accion.equals("2:right")){p2C++;}
 			if(accion.equals("2:left")){p2C--;}
 		//selector img y condicionales
-			 image(p1, xp1, 170);
-			 image(p2, xp2, 170);
 			 if(p1C>2) {p1C=0;} if(p2C>2) {p2C=0;}
 			 if(p1C<0) {p1C=2;} if(p2C<0) {p2C=2;}
 			 if(p1C==0) {xp1=194;} if(p2C==0) {xp2=194;}
@@ -114,7 +270,6 @@ public class Principal extends PApplet{
 					player2ok=false;}
 			break;
 		case 2:
-			intro.draw();
 			if(accion.equals("1:pink")) {player1ok=true;}
 			if(accion.equals("2:pink")) {player2ok=true;}
 			if(player1ok==true) {
@@ -123,9 +278,7 @@ public class Principal extends PApplet{
 				player2ok=false;}
 			break;
 		case 3:
-			game.draw(gameScreen);
-			player1.draw(p1C);
-			player2.draw(p2C);
+			
 			
 			//animaciones
 			
@@ -172,27 +325,20 @@ public class Principal extends PApplet{
 			
 			//saltar
 		
-			if(accion.equals("1:up")) {
+			if(accion.equals("1:up")&&p1jump==false) {
+				p1jump=true;
 				player1.setAction("JUMP");
+				p1jump= false;
+				
+				
 			}
 			
-			if(accion.equals("2:up")&&!player2.getAction().equals("FALL")) {
+			if(accion.equals("2:up")&&p2jump==false) {
+				p2jump=true;
 				player2.setAction("JUMP");
+				p2jump= false;
+				
 			}
-			
-			//caer
-			
-			//logica
-			
-			gravedad(player1);
-			gravedad(player2);
-			
-			
-			
-					
-					
-				
-				
 			
 			
 			if(gameOver==true) {
@@ -207,85 +353,7 @@ public class Principal extends PApplet{
 		default:
 			break;
 		}
-	}
-	
-	private void reset() {
-		// TODO Auto-generated method stub
 		
-	}
-
-	
-	private void gravedad(Player player) {
-		//tocar con el piso p1
-		if(player.getPosY()<620) {
-			 
-		//tocar con plataformas abajo p1	
-			if(player.getPosY()<=429&&player.getPosY()>=425) {
-				
-				if(player.getPosX()<125||player.getPosX()>1155) {
-					if(!player.getAction().equals("JUMP")) {
-					player.setAction("FALL");
-					player.setPosY(player.getPosY()-3);}}
-					else{
-						if(player.getPosX()>615&&player.getPosX()<665) {
-							if(!player.getAction().equals("JUMP")) {
-							player.setAction("FALL");
-							player.setPosY(player.getPosY()-3);}
-						}
-						
-					}
-					
-				}
-			
-			else {
-					
-				//tocar con la plataforma2
-				if(player.getPosY()>223&&player.getPosY()<227) {
-					
-					if(player.getPosX()<395||player.getPosX()>885) {
-						if(!player.getAction().equals("JUMP")) {
-						player.setAction("FALL");
-						player.setPosY(player.getPosY()-3);}
-					}
-				}
-				}
-			
-		}
-	}
-	
-	@Override
-	public void mousePressed() {
-		
-//--------------------BUTTONS--------------------//
-		
-		// StartScreen --> SelectScreen
-		if (screen == 0 && mouseX > (621 - (209 / 2))
-				&& mouseX < (621 + (209 / 2))
-				&& mouseY > (543 - (50 / 2))
-				&& mouseY < (543 + (50 / 2))) {
-			screen = 1;
-		}
-		
-		// SelectScreen --> IntroScreen
-		if (screen == 1 && mouseX > (640 - (110 / 2))
-				&& mouseX < (640 + (110 / 2))
-				&& mouseY > (619 - (50 / 2))
-				&& mouseY < (619 + (50 / 2))) {
-			screen = 2;
-		}
-		
-		// IntroScreen --> GameScreen
-		if (screen == 2 && mouseX > (640 - (110 / 2))
-				&& mouseX < (640 + (110 / 2))
-				&& mouseY > (568 - (50 / 2))
-				&& mouseY < (568 + (50 / 2))) {
-			screen = 3;
-		}
-	}
-	
-
-	public void msgRecibido(int id, String msg) {
-		accion = id + ":" + msg;
 	}
 
 	}
