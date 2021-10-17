@@ -23,7 +23,6 @@ public class GameScreen {
 	public void draw(int GameScreen) { // 0 temple, 1 ship, 2 pyramid
 		
 		app.rectMode(app.CENTER);
-		
 		switch (GameScreen) {
 		case 0:
 			app.image(temple, 640, 360);
@@ -37,7 +36,9 @@ public class GameScreen {
 
 		default:
 			break;
+			
 		}
+		app.image(vidas, 640, 360, 1280, 720);
 		
 		app.fill(0);
 		app.rect(25, 360, 50, 720); //left limit

@@ -112,7 +112,7 @@ public class Player implements Runnable{
 		
 		app.ellipseMode(app.CENTER);
 		app.fill(255);
-		app.ellipse(posX, posY, 100, 100);
+		//app.ellipse(posX, posY, 100, 100);
 		
 		//Player 1
 		switch (characterSelect) { // 0 samurai, 1 pirate, 2 azteck

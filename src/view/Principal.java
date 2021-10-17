@@ -60,8 +60,8 @@ public class Principal extends PApplet{
 		p2jump = false;
 		
 		
-		player1 = new Player(this, 200, 100);
-		player2 = new Player(this, 1100, 100);
+		player1 = new Player(this, 200, 620);
+		player2 = new Player(this, 1100, 620);
 		player2.setRightAn(false);
 		
 		accion="no conectado";
