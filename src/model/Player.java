@@ -13,7 +13,7 @@ public class Player implements Runnable{
 	public final static String BLOCK = "BLOCK";
 	
 	private String action;
-	private Boolean rightAn;
+	private Boolean rightAn,caer,playerJump;
 	
 	private int jumpTimer, runTimer, fallTimer, attackTimer;
 	
@@ -62,6 +62,7 @@ public class Player implements Runnable{
 	private PApplet app;
 	private int posX, posY;
 	private int health = 80;
+	private int jumpFactor,gravity,fallTime;
 	
 	public Player(PApplet app, int posX, int posY) {
 		
@@ -78,6 +79,12 @@ public class Player implements Runnable{
 		runTimer = 0;
 		fallTimer = 0;
 		attackTimer = 0;
+		fallTime = 0;
+		gravity = 10;
+		
+		caer =false;
+		playerJump = false;
+		fallTime = 0;
 		
 		AA = new PImage[3];
 		AAD = new PImage[3];
@@ -108,14 +115,20 @@ public class Player implements Runnable{
 		loadImages();
 	}
 	
-	public void draw(int characterSelect) {
+	public void draw(int characterSelect,String accion) {
 		
+		System.out.print("");
 		app.ellipseMode(app.CENTER);
 		app.fill(255);
 		//app.ellipse(posX, posY, 100, 100);
 		
+		//gravedad 
+				gravedad(this,accion);
+		
 		//Player 1
 		switch (characterSelect) { // 0 samurai, 1 pirate, 2 azteck
+		
+		
 		
 		case 0: //samurai
 			
@@ -131,7 +144,6 @@ public class Player implements Runnable{
 				break;
 			case JUMP:
 				jumpAnimationSamurai();
-				posY -= 8;
 				break;
 			case FALL:
 				fallAnimationSamurai();
@@ -176,7 +188,6 @@ public class Player implements Runnable{
 				break;
 			case JUMP:
 				jumpAnimationPirate();
-				posY -= 8;
 				break;
 			case FALL:
 				fallAnimationPirate();
@@ -221,7 +232,6 @@ public class Player implements Runnable{
 				break;
 			case JUMP:
 				jumpAnimationAzteck();
-				posY -= 8;
 				break;
 			case FALL:
 				fallAnimationAzteck();
@@ -240,6 +250,7 @@ public class Player implements Runnable{
 				break;
 			case BLOCK:
 				if(rightAn == true) {
+					playerJump=false;
 					app.image(ABd, posX, posY);
 					}
 				if(rightAn == false) {
@@ -300,7 +311,9 @@ public class Player implements Runnable{
 		
 		jumpTimer++;
 		
+		if(jumpTimer>0) {playerJump=true;}
 		if(jumpTimer>60) {
+			playerJump=false;
 			jumpTimer = 0;
 			action = DEFAULT;
 		}
@@ -341,8 +354,9 @@ public class Player implements Runnable{
 		}
 		
 		jumpTimer++;
-		
+		if(jumpTimer>0) {playerJump=true;}
 		if(jumpTimer>60) {
+			playerJump = false;
 			jumpTimer = 0;
 			action = DEFAULT;
 		}
@@ -384,7 +398,9 @@ public class Player implements Runnable{
 		
 		jumpTimer++;
 		
+		if(jumpTimer>0) {playerJump=true;}
 		if(jumpTimer>60) {
+			playerJump = false;
 			jumpTimer = 0;
 			action = DEFAULT;
 		}
@@ -415,6 +431,7 @@ public class Player implements Runnable{
 		runTimer++;
 		
 		if(runTimer>15) {
+			playerJump=false;
 			runTimer = 0;
 			action = DEFAULT;
 		}
@@ -445,6 +462,7 @@ public class Player implements Runnable{
 		runTimer++;
 		
 		if(runTimer>15) {
+			playerJump=false;
 			runTimer = 0;
 			action = DEFAULT;
 		}
@@ -475,6 +493,7 @@ public class Player implements Runnable{
 		runTimer++;
 		
 		if(runTimer>15) {
+			playerJump=false;
 			runTimer = 0;
 			action = DEFAULT;
 		}
@@ -535,6 +554,7 @@ public class Player implements Runnable{
 		fallTimer++;
 		
 		if(fallTimer>15) {
+			playerJump=false;
 			fallTimer = 0;
 			action = DEFAULT;
 		}
@@ -595,6 +615,7 @@ public class Player implements Runnable{
 		attackTimer++;
 		
 		if(attackTimer>15) {
+			playerJump=false;
 			attackTimer = 0;
 			action = DEFAULT;
 		}
@@ -625,6 +646,7 @@ public class Player implements Runnable{
 		attackTimer++;
 		
 		if(attackTimer>15) {
+			playerJump=false;
 			attackTimer = 0;
 			action = DEFAULT;
 		}
@@ -655,6 +677,7 @@ public class Player implements Runnable{
 		attackTimer++;
 		
 		if(attackTimer>15) {
+			playerJump=false;
 			attackTimer = 0;
 			action = DEFAULT;
 		}
@@ -756,6 +779,71 @@ public class Player implements Runnable{
 		}
 	}
 	
+	private void gravedad(Player player, String accion) {
+		
+		//colisiones
+	
+		
+		
+		player.setPosY(player.getPosY()+gravity+jumpFactor);
+		
+		if(caer = true) {
+			
+			fallTime++;
+			if(fallTime==15) {
+				gravity+=gravity/2;
+				fallTime=0;
+			}
+		}else {
+			gravity = 0;
+			jumpFactor = 0;
+		}
+		
+		
+		if(player.getPosY()>=623) {
+			player.setPosY(623);
+			//if(player.getAction().equals("FALL")) {
+			//player.setAction("DEFAULT");}
+			caer = false;
+		}
+		
+		//segunda pltaforma
+		if(player.getPosX()>665&&player.getPosX()<1105) {
+			if(player.getPosY()>=425&&player.getPosY()<=470) {
+				if(!accion.equals("down")) {
+					caer = false;}else {caer = true;}
+			}
+		}
+		
+		
+		//tercera pltaforma
+		if(player.getPosX()>395&&player.getPosX()<885) {
+			if(player.getPosY()>=223&&player.getPosY()<=273) {
+				if(!accion.equals("down")) {
+					caer = false;}else {caer = true;}
+				}}
+		
+		
+		//primera pltarforma
+		if(player.getPosX()>125&&player.getPosX()<615) {
+			if(player.getPosY()>=425&&player.getPosY()<=470) {
+				if(!accion.equals("down")) {
+				caer = false;}else {caer = true;}
+			}
+		}
+		
+		if(playerJump==true) {
+			jumpFactor = -10;
+			gravity = 3;
+			fallTime=0;
+		}else {jumpFactor=0;
+		gravity = 10;}
+		
+		System.out.print(caer);
+		System.out.print(player.getPosY());
+		
+	}
+	
 	public void setHealth(int health) {
 		this.health = health;
 	}
@@ -793,6 +881,9 @@ public class Player implements Runnable{
 	}
 	public String getAction() {
 		return action;
+	}
+	public Boolean getPlayerJump() {
+		return playerJump;
 	}
 
 }

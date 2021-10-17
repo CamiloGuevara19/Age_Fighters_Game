@@ -27,7 +27,7 @@ public class Principal extends PApplet{
 	private int screen; //0 menu, 1 select, 2 intro, 3 game
 	private int gameScreen;
 	private int p1C=0, p2C=0;
-	private boolean player1ok,player2ok,p1caer,p2caer,p1jump,p2jump;
+	private boolean player1ok,player2ok;
 	boolean gameOver = false;
 	private int xp1 = 194,xp2 = 194;
 	private String accion;
@@ -56,14 +56,12 @@ public class Principal extends PApplet{
 		
 		player1ok = false;
 		player2ok = false;
-		p1caer = false;
-		p2caer = false; 
-		p1jump = false;
-		p2jump = false;
+	
 		
 		
-		player1 = new Player(this, 200, 620);
-		player2 = new Player(this, 1100, 620);
+		
+		player1 = new Player(this, 200, 100);
+		player2 = new Player(this, 1100, 100);
 		player2.setRightAn(false);
 		
 		accion="no conectado";
@@ -105,8 +103,8 @@ public class Principal extends PApplet{
 			break;
 		case 3:
 			game.draw(gameScreen);
-			player1.draw(p1C);
-			player2.draw(p2C);
+			player1.draw(p1C,accion);
+			player2.draw(p2C,accion);
 			fill(255,0,0);
 			rectMode(CORNER);
 			rect(549, 26,-(400-(player1.getHealth()*5) ), 50);
@@ -122,8 +120,7 @@ public class Principal extends PApplet{
 			//logica
 			
 			//caer
-			//gravedad(player1,p1caer,p1jump);
-			//gravedad(player2,p2caer,p2jump);
+			
 			
 			//salud
 			if(player1.getHealth()<0) {
@@ -174,55 +171,6 @@ public class Principal extends PApplet{
 	}
 
 	
-	private void gravedad(Player player,boolean caer, boolean playerJump) {
-	
-		//colisiones
-	
-		
-		
-		
-		if(caer = true) {
-			player.setAction("FALL");
-			player.setPosY(player.getPosY()+3);
-		}else {
-			player.setPosY(player.getPosY());
-		}
-		
-		
-		if(player.getPosY()>620) {
-			player.setPosY(623);
-			caer = true;
-		}
-		
-		//segunda pltaforma
-		if(player.getPosX()>665&&player.getPosX()<615) {
-			if(player.getPosY()>=450) {
-				if(!accion.equals("down")) {
-					caer = false;}
-			}
-		}
-		
-		
-		//tercera pltaforma
-		if(player.getPosX()>395&&player.getPosX()<885) {
-			if(player.getPosY()>=223) {
-				if(!accion.equals("down")) {
-					caer = false;}}}
-		
-		
-		//primera pltarforma
-		if(player.getPosX()>125&&player.getPosX()<615) {
-			if(player.getPosY()>=450) {
-				if(!accion.equals("down")) {
-				caer = false;}
-			}
-		}
-		
-		
-		System.out.print(caer);
-		System.out.print(player.getPosY());
-		
-	}
 	
 	@Override
 	public void mousePressed() {
@@ -346,18 +294,16 @@ switch (screen) {
 			
 			//saltar
 		
-			if(accion.equals("1:up")&&p1jump==false) {
-				p1jump=true;
+			if(accion.equals("1:up")&&player1.getPlayerJump()==false) {
+				
 				player1.setAction("JUMP");
-				p1jump= false;
+			
 				
 				
 			}
 			
-			if(accion.equals("2:up")&&p2jump==false) {
-				p2jump=true;
+			if(accion.equals("2:up")&&player2.getPlayerJump()==false) {
 				player2.setAction("JUMP");
-				p2jump= false;
 				
 			}}
 			
@@ -371,6 +317,8 @@ switch (screen) {
 					player1ok=false; 
 					player2ok=false;}
 			}
+			
+		
 			break;
 		default:
 			break;
