@@ -16,6 +16,7 @@ public class Session extends Thread{
 	 private BufferedWriter writer;
 	 private Socket socket;
 	 private Principal observer;
+	 private String previus = "";
 	 
 	 public Session(Socket socket,int id) {
 		 this.socket = socket;
@@ -54,8 +55,10 @@ public class Session extends Thread{
 			
 			while(true) {
 				String line = reader.readLine();
+				if(!line.equals(previus)) {
 				observer.msgRecibido(number,line);
-				System.out.println(line);}
+				previus =  line;
+				System.out.println(line);}}
 			
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block

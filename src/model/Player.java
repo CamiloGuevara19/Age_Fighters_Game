@@ -5,12 +5,12 @@ import processing.core.PImage;
 
 public class Player implements Runnable{
 	
-	public final static String WALK = "walk";
-	public final static String JUMP = "jump";
-	public final static String FALL = "fall";
-	public final static String DEFAULT = "default";
-	public final static String ATTACK = "attack";
-	public final static String BLOCK = "block";
+	public final static String WALK = "WALK";
+	public final static String JUMP = "JUMP";
+	public final static String FALL = "FALL";
+	public final static String DEFAULT = "DEFAULT";
+	public final static String ATTACK = "ATTACK";
+	public final static String BLOCK = "BLOCK";
 	
 	private String action;
 	private Boolean rightAn;
@@ -68,6 +68,8 @@ public class Player implements Runnable{
 		this.app = app;
 		this.posX = posX;
 		this.posY = posY;
+		
+		app.imageMode(app.CENTER);
 		
 		action = DEFAULT;
 		rightAn = true;

@@ -59,6 +59,8 @@ public class Principal extends PApplet{
 		player1 = new Player(this, 200, 620);
 		player2 = new Player(this, 1100, 620);
 		player2.setRightAn(false);
+		
+		accion="no conectado";
 
 		gameScreen = (int) random(3); // random for random map
 
@@ -71,13 +73,18 @@ public class Principal extends PApplet{
 	public void draw() {
 		background(255);	
 		
+		
+		System.out.println(accion);
+		
+		
 		switch (screen) {
+		
 		
 		case 0:
 			start.draw();
 			if(accion.equals("1:pink")) {player1ok=true;}
 			if(accion.equals("2:pink")) {player2ok=true;}
-			if(player1ok==true&&player2ok==true) {
+			if(player1ok==true) {
 				screen=1;
 				player1ok=false; 
 				player2ok=false;}
@@ -101,7 +108,7 @@ public class Principal extends PApplet{
 			 //continuar
 				if(accion.equals("1:pink")) {player1ok=true;}
 				if(accion.equals("2:pink")) {player2ok=true;}
-				if(player1ok==true&&player2ok==true) {
+				if(player1ok==true) {
 					screen=2;
 					player1ok=false; 
 					player2ok=false;}
@@ -110,7 +117,7 @@ public class Principal extends PApplet{
 			intro.draw();
 			if(accion.equals("1:pink")) {player1ok=true;}
 			if(accion.equals("2:pink")) {player2ok=true;}
-			if(player1ok==true&&player2ok==true) {
+			if(player1ok==true) {
 				screen=3;
 				player1ok=false; 
 				player2ok=false;}
