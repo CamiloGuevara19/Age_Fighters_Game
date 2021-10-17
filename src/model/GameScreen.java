@@ -40,13 +40,6 @@ public class GameScreen {
 		}
 		app.image(vidas, 640, 360, 1280, 720);
 		
-		app.fill(0);
-		app.rect(25, 360, 50, 720); //left limit
-		app.rect(1255, 360, 50, 720); // right limit
-		app.rect(640, 695, 1280, 50); // down limit
-		app.rect(640, 298, 440, 50); // top platform
-		app.rect(370, 500, 440, 50); // left platform
-		app.rect(910, 500, 440, 50); // right platform
 		
 	}
 
