@@ -115,27 +115,44 @@ public class Player implements Runnable{
 		//Player 1
 		switch (characterSelect) { // 0 samurai, 1 pirate, 2 azteck
 		
-		case 0:
+		case 0: //samurai
 			
 			switch (action) { //Different animations for samurai
 			
 			case DEFAULT:
-				
+				if(rightAn == true) {
+					app.image(Sd, posX, posY);
+					}
+				if(rightAn == false) {
+					app.image(S, posX, posY);
+					}
 				break;
 			case JUMP:
-				
+				jumpAnimationSamurai();
+				posY -= 4;
 				break;
 			case FALL:
-				
+				fallAnimationSamurai();
 				break;
 			case WALK:
-				
+				walkAnimationSamurai();
+				if(rightAn == true) {
+					posX -=4;
+				}
+				if(rightAn == false) {
+					posX +=4;
+				}
 				break;
 			case ATTACK:
-				
+				attackAnimationSamurai();
 				break;
 			case BLOCK:
-				
+				if(rightAn == true) {
+					app.image(SBd, posX, posY);
+					}
+				if(rightAn == false) {
+					app.image(SB, posX, posY);
+					}
 				break;
 
 			default:
@@ -143,28 +160,94 @@ public class Player implements Runnable{
 			}
 			
 			break;
-		case 1:
+		case 1: // pirate
 			
-			break;
-		case 2:
+			switch (action) { //Different animations for pirate
 			
-			break;
-			
+			case DEFAULT:
+				if(rightAn == true) {
+					app.image(Pd, posX, posY);
+					}
+				if(rightAn == false) {
+					app.image(P, posX, posY);
+					}
+				break;
+			case JUMP:
+				jumpAnimationPirate();
+				posY -= 4;
+				break;
+			case FALL:
+				fallAnimationPirate();
+				break;
+			case WALK:
+				walkAnimationPirate();
+				if(rightAn == true) {
+					posX -=4;
+				}
+				if(rightAn == false) {
+					posX +=4;
+				}
+				break;
+			case ATTACK:
+				attackAnimationPirate();
+				break;
+			case BLOCK:
+				if(rightAn == true) {
+					app.image(PBd, posX, posY);
+					}
+				if(rightAn == false) {
+					app.image(PB, posX, posY);
+					}
+				break;
 
-		default:
-			break;
-		}
-		
-		//Player 2
-		switch (characterSelect) { // 0 samurai, 1 pirate, 2 azteck
-		
-		case 0:
+			default:
+				break;
+			}
 			
 			break;
-		case 1:
+		case 2: //azteck
 			
-			break;
-		case 2:
+			switch (action) { //Different animations for azteck
+			
+			case DEFAULT:
+				if(rightAn == true) {
+					app.image(Ad, posX, posY);
+					}
+				if(rightAn == false) {
+					app.image(A, posX, posY);
+					}
+				break;
+			case JUMP:
+				jumpAnimationAzteck();
+				posY -= 4;
+				break;
+			case FALL:
+				fallAnimationAzteck();
+				break;
+			case WALK:
+				walkAnimationAzteck();
+				if(rightAn == true) {
+					posX -=4;
+				}
+				if(rightAn == false) {
+					posX +=4;
+				}
+				break;
+			case ATTACK:
+				attackAnimationAzteck();
+				break;
+			case BLOCK:
+				if(rightAn == true) {
+					app.image(ABd, posX, posY);
+					}
+				if(rightAn == false) {
+					app.image(AB, posX, posY);
+					}
+				break;
+
+			default:
+				break;
+			}
 			
 			break;
 			
@@ -671,30 +754,30 @@ public class Player implements Runnable{
 		}
 	}
 	
-		public void setHealth(int health) {
-			this.health = health;
-		}
-		
-		public int getHealth() {
-			return health;
-		}
-		
-		public void setAction(String action) {
-			this.action = action;
-		}
-		
-		public Boolean getRightAn() {
-			return rightAn;
-		}
-		
-		public void setRightAn(Boolean rightAn) {
-			this.rightAn = rightAn;
-		}
-		
-		public int getPosY() {
-			return posY;
-		}
-		
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+	public Boolean getRightAn() {
+		return rightAn;
+	}
+
+	public void setRightAn(Boolean rightAn) {
+		this.rightAn = rightAn;
+	}
+
+	public int getPosY() {
+		return posY;
+	}
+
 	public int getPosX() {
 		return posX;
 	}

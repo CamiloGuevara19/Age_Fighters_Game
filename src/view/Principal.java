@@ -246,14 +246,6 @@ public class Principal extends PApplet{
 		}
 	}
 	
-	
-	
-	
-	@Override
-	public void keyPressed() {
-		
-	}
-	
 	@Override
 	public void mousePressed() {
 		
@@ -284,15 +276,6 @@ public class Principal extends PApplet{
 		}
 	}
 	
-	@Override
-	public void mouseDragged() {
-		
-	}
-	
-	@Override
-	public void mouseReleased() {
-
-	}
 
 	public void msgRecibido(int id, String msg) {
 		accion = id + ":" + msg;

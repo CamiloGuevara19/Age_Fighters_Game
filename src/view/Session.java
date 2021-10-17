@@ -11,7 +11,7 @@ import java.net.Socket;
 
 public class Session extends Thread{
 	
-	private  int number;
+	 private  int number;
 	 private BufferedReader reader;
 	 private BufferedWriter writer;
 	 private Socket socket;
