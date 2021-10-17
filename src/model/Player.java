@@ -131,7 +131,7 @@ public class Player implements Runnable{
 				break;
 			case JUMP:
 				jumpAnimationSamurai();
-				posY -= 4;
+				posY -= 8;
 				break;
 			case FALL:
 				fallAnimationSamurai();
@@ -176,7 +176,7 @@ public class Player implements Runnable{
 				break;
 			case JUMP:
 				jumpAnimationPirate();
-				posY -= 4;
+				posY -= 8;
 				break;
 			case FALL:
 				fallAnimationPirate();
@@ -221,7 +221,7 @@ public class Player implements Runnable{
 				break;
 			case JUMP:
 				jumpAnimationAzteck();
-				posY -= 4;
+				posY -= 8;
 				break;
 			case FALL:
 				fallAnimationAzteck();
@@ -267,40 +267,40 @@ public class Player implements Runnable{
 	private void jumpAnimationAzteck() {
 		
 		if(rightAn == false) {
-			if (jumpTimer >= 0 && jumpTimer < 20) {
+			if (jumpTimer >= 0 && jumpTimer < 10) {
 				app.image(AS[0], posX, posY);
-			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+			}else if(jumpTimer >= 10 && jumpTimer < 20) {
 				app.image(AS[1], posX, posY);
-			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+			}else if(jumpTimer >= 20 && jumpTimer < 30) {
 				app.image(AS[2], posX, posY);
-			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+			}else if(jumpTimer >= 30 && jumpTimer < 40) {
 				app.image(ACA[0], posX, posY);
-			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+			}else if(jumpTimer >= 40 && jumpTimer < 50) {
 				app.image(ACA[1], posX, posY);
-			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+			}else if(jumpTimer >= 50 && jumpTimer < 60) {
 				app.image(ACA[2], posX, posY);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (jumpTimer >= 0 && jumpTimer < 20) {
+			if (jumpTimer >= 0 && jumpTimer < 10) {
 				app.image(ASD[0], posX, posY);
-			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+			}else if(jumpTimer >= 10 && jumpTimer < 20) {
 				app.image(ASD[1], posX, posY);
-			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+			}else if(jumpTimer >= 20 && jumpTimer < 30) {
 				app.image(ASD[2], posX, posY);
-			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+			}else if(jumpTimer >= 30 && jumpTimer < 40) {
 				app.image(ACAD[0], posX, posY);
-			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+			}else if(jumpTimer >= 40 && jumpTimer < 50) {
 				app.image(ACAD[1], posX, posY);
-			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+			}else if(jumpTimer >= 50 && jumpTimer < 60) {
 				app.image(ACAD[2], posX, posY);
 			}
 		}
 		
 		jumpTimer++;
 		
-		if(jumpTimer>120) {
+		if(jumpTimer>60) {
 			jumpTimer = 0;
 			action = DEFAULT;
 		}
@@ -309,40 +309,40 @@ public class Player implements Runnable{
 	private void jumpAnimationPirate() {
 		
 		if(rightAn == false) {
-			if (jumpTimer >= 0 && jumpTimer < 20) {
+			if (jumpTimer >= 0 && jumpTimer < 10) {
 				app.image(PS[0], posX, posY);
-			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+			}else if(jumpTimer >= 10 && jumpTimer < 20) {
 				app.image(PS[1], posX, posY);
-			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+			}else if(jumpTimer >= 20 && jumpTimer < 30) {
 				app.image(PS[2], posX, posY);
-			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+			}else if(jumpTimer >= 30 && jumpTimer < 40) {
 				app.image(PS[2], posX, posY);
-			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+			}else if(jumpTimer >= 40 && jumpTimer < 50) {
 				app.image(PS[1], posX, posY);
-			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+			}else if(jumpTimer >= 50 && jumpTimer < 60) {
 				app.image(PS[0], posX, posY);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (jumpTimer >= 0 && jumpTimer < 20) {
+			if (jumpTimer >= 0 && jumpTimer < 10) {
 				app.image(PSD[0], posX, posY);
-			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+			}else if(jumpTimer >= 10 && jumpTimer < 20) {
 				app.image(PSD[1], posX, posY);
-			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+			}else if(jumpTimer >= 20 && jumpTimer < 30) {
 				app.image(PSD[2], posX, posY);
-			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+			}else if(jumpTimer >= 30 && jumpTimer < 40) {
 				app.image(PSD[2], posX, posY);
-			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+			}else if(jumpTimer >= 40 && jumpTimer < 50) {
 				app.image(PSD[1], posX, posY);
-			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+			}else if(jumpTimer >= 50 && jumpTimer < 60) {
 				app.image(PSD[0], posX, posY);
 			}
 		}
 		
 		jumpTimer++;
 		
-		if(jumpTimer>120) {
+		if(jumpTimer>60) {
 			jumpTimer = 0;
 			action = DEFAULT;
 		}
@@ -351,40 +351,40 @@ public class Player implements Runnable{
 	private void jumpAnimationSamurai() {
 		
 		if(rightAn == false) {
-			if (jumpTimer >= 0 && jumpTimer < 20) {
+			if (jumpTimer >= 0 && jumpTimer < 10) {
 				app.image(SS[0], posX, posY);
-			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+			}else if(jumpTimer >= 10 && jumpTimer < 20) {
 				app.image(SS[1], posX, posY);
-			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+			}else if(jumpTimer >= 20 && jumpTimer < 30) {
 				app.image(SS[2], posX, posY);
-			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+			}else if(jumpTimer >= 30 && jumpTimer < 40) {
 				app.image(SCA[0], posX, posY);
-			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+			}else if(jumpTimer >= 40 && jumpTimer < 50) {
 				app.image(SCA[1], posX, posY);
-			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+			}else if(jumpTimer >= 50 && jumpTimer < 60) {
 				app.image(SCA[2], posX, posY);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (jumpTimer >= 0 && jumpTimer < 20) {
+			if (jumpTimer >= 0 && jumpTimer < 10) {
 				app.image(SSD[0], posX, posY);
-			}else if(jumpTimer >= 20 && jumpTimer < 40) {
+			}else if(jumpTimer >= 10 && jumpTimer < 20) {
 				app.image(SSD[1], posX, posY);
-			}else if(jumpTimer >= 40 && jumpTimer < 60) {
+			}else if(jumpTimer >= 20 && jumpTimer < 30) {
 				app.image(SSD[2], posX, posY);
-			}else if(jumpTimer >= 60 && jumpTimer < 80) {
+			}else if(jumpTimer >= 30 && jumpTimer < 40) {
 				app.image(SCAD[0], posX, posY);
-			}else if(jumpTimer >= 80 && jumpTimer < 100) {
+			}else if(jumpTimer >= 40 && jumpTimer < 50) {
 				app.image(SCAD[1], posX, posY);
-			}else if(jumpTimer >= 100 && jumpTimer < 120) {
+			}else if(jumpTimer >= 50 && jumpTimer < 60) {
 				app.image(SCAD[2], posX, posY);
 			}
 		}
 		
 		jumpTimer++;
 		
-		if(jumpTimer>120) {
+		if(jumpTimer>60) {
 			jumpTimer = 0;
 			action = DEFAULT;
 		}
@@ -393,28 +393,28 @@ public class Player implements Runnable{
 	private void walkAnimationAzteck() {
 		
 		if(rightAn == false) {
-			if (runTimer >= 0 && runTimer < 10) {
+			if (runTimer >= 0 && runTimer < 5) {
 				app.image(AC[0], posX, posY);
-			}else if(runTimer >= 10 && runTimer < 20) {
+			}else if(runTimer >= 5 && runTimer < 10) {
 				app.image(AC[1], posX, posY);
-			}else if(runTimer >= 20 && runTimer < 30) {
+			}else if(runTimer >= 10 && runTimer < 15) {
 				app.image(AC[2], posX, posY);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (runTimer >= 0 && runTimer < 10) {
+			if (runTimer >= 0 && runTimer < 5) {
 				app.image(ACD[0], posX, posY);
-			}else if(runTimer >= 10 && runTimer < 20) {
+			}else if(runTimer >= 5 && runTimer < 10) {
 				app.image(ACD[1], posX, posY);
-			}else if(runTimer >= 20 && runTimer < 30) {
+			}else if(runTimer >= 10 && runTimer < 15) {
 				app.image(ACD[2], posX, posY);
 			}
 		}
 		
 		runTimer++;
 		
-		if(runTimer>30) {
+		if(runTimer>15) {
 			runTimer = 0;
 			action = DEFAULT;
 		}
@@ -423,28 +423,28 @@ public class Player implements Runnable{
 	private void walkAnimationPirate() {
 		
 		if(rightAn == false) {
-			if (runTimer >= 0 && runTimer < 10) {
+			if (runTimer >= 0 && runTimer < 5) {
 				app.image(PC[0], posX, posY);
-			}else if(runTimer >= 10 && runTimer < 20) {
+			}else if(runTimer >= 5 && runTimer < 10) {
 				app.image(PC[1], posX, posY);
-			}else if(runTimer >= 20 && runTimer < 30) {
+			}else if(runTimer >= 10 && runTimer < 15) {
 				app.image(PC[2], posX, posY);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (runTimer >= 0 && runTimer < 10) {
+			if (runTimer >= 0 && runTimer < 5) {
 				app.image(PCD[0], posX, posY);
-			}else if(runTimer >= 10 && runTimer < 20) {
+			}else if(runTimer >= 5 && runTimer < 10) {
 				app.image(PCD[1], posX, posY);
-			}else if(runTimer >= 20 && runTimer < 30) {
+			}else if(runTimer >= 10 && runTimer < 15) {
 				app.image(PCD[2], posX, posY);
 			}
 		}
 		
 		runTimer++;
 		
-		if(runTimer>30) {
+		if(runTimer>15) {
 			runTimer = 0;
 			action = DEFAULT;
 		}
@@ -453,28 +453,28 @@ public class Player implements Runnable{
 	private void walkAnimationSamurai() {
 		
 		if(rightAn == false) {
-			if (runTimer >= 0 && runTimer < 10) {
+			if (runTimer >= 0 && runTimer < 5) {
 				app.image(SC[0], posX, posY);
-			}else if(runTimer >= 10 && runTimer < 20) {
+			}else if(runTimer >= 5 && runTimer < 10) {
 				app.image(SC[1], posX, posY);
-			}else if(runTimer >= 20 && runTimer < 30) {
+			}else if(runTimer >= 10 && runTimer < 15) {
 				app.image(SC[2], posX, posY);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (runTimer >= 0 && runTimer < 10) {
+			if (runTimer >= 0 && runTimer < 5) {
 				app.image(SCD[0], posX, posY);
-			}else if(runTimer >= 10 && runTimer < 20) {
+			}else if(runTimer >= 5 && runTimer < 10) {
 				app.image(SCD[1], posX, posY);
-			}else if(runTimer >= 20 && runTimer < 30) {
+			}else if(runTimer >= 10 && runTimer < 15) {
 				app.image(SCD[2], posX, posY);
 			}
 		}
 		
 		runTimer++;
 		
-		if(runTimer>30) {
+		if(runTimer>15) {
 			runTimer = 0;
 			action = DEFAULT;
 		}
@@ -483,28 +483,28 @@ public class Player implements Runnable{
 	private void fallAnimationAzteck() {
 		
 		if(rightAn == false) {
-			if (fallTimer >= 0 && fallTimer < 10) {
+			if (fallTimer >= 0 && fallTimer < 5) {
 				app.image(ACA[0], posX, posY);
-			}else if(fallTimer >= 10 && fallTimer < 20) {
+			}else if(fallTimer >= 5 && fallTimer < 10) {
 				app.image(ACA[1], posX, posY);
-			}else if(fallTimer >= 20 && fallTimer < 30) {
+			}else if(fallTimer >= 10 && fallTimer < 15) {
 				app.image(ACA[2], posX, posY);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (fallTimer >= 0 && fallTimer < 10) {
+			if (fallTimer >= 0 && fallTimer < 5) {
 				app.image(ACAD[0], posX, posY);
-			}else if(fallTimer >= 10 && fallTimer < 20) {
+			}else if(fallTimer >= 5 && fallTimer < 10) {
 				app.image(ACAD[1], posX, posY);
-			}else if(fallTimer >= 20 && fallTimer < 30) {
+			}else if(fallTimer >= 10 && fallTimer < 15) {
 				app.image(ACAD[2], posX, posY);
 			}
 		}
 		
 		fallTimer++;
 		
-		if(fallTimer>30) {
+		if(fallTimer>15) {
 			fallTimer = 0;
 			action = DEFAULT;
 		}
@@ -513,28 +513,28 @@ public class Player implements Runnable{
 	private void fallAnimationPirate() {
 		
 		if(rightAn == false) {
-			if (fallTimer >= 0 && fallTimer < 10) {
+			if (fallTimer >= 0 && fallTimer < 5) {
 				app.image(PS[2], posX, posY);
-			}else if(fallTimer >= 10 && fallTimer < 20) {
+			}else if(fallTimer >= 5 && fallTimer < 10) {
 				app.image(PS[1], posX, posY);
-			}else if(fallTimer >= 20 && fallTimer < 30) {
+			}else if(fallTimer >= 10 && fallTimer < 15) {
 				app.image(PS[0], posX, posY);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (fallTimer >= 0 && fallTimer < 10) {
+			if (fallTimer >= 0 && fallTimer < 5) {
 				app.image(PSD[2], posX, posY);
-			}else if(fallTimer >= 10 && fallTimer < 20) {
+			}else if(fallTimer >= 5 && fallTimer < 10) {
 				app.image(PSD[1], posX, posY);
-			}else if(fallTimer >= 20 && fallTimer < 30) {
+			}else if(fallTimer >= 10 && fallTimer < 15) {
 				app.image(PSD[0], posX, posY);
 			}
 		}
 		
 		fallTimer++;
 		
-		if(fallTimer>30) {
+		if(fallTimer>15) {
 			fallTimer = 0;
 			action = DEFAULT;
 		}
@@ -543,28 +543,28 @@ public class Player implements Runnable{
 	private void fallAnimationSamurai() {
 		
 		if(rightAn == false) {
-			if (fallTimer >= 0 && fallTimer < 10) {
+			if (fallTimer >= 0 && fallTimer < 5) {
 				app.image(SCA[0], posX, posY);
-			}else if(fallTimer >= 10 && fallTimer < 20) {
+			}else if(fallTimer >= 5 && fallTimer < 10) {
 				app.image(SCA[1], posX, posY);
-			}else if(fallTimer >= 20 && fallTimer < 30) {
+			}else if(fallTimer >= 10 && fallTimer < 15) {
 				app.image(SCA[2], posX, posY);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (fallTimer >= 0 && fallTimer < 10) {
+			if (fallTimer >= 0 && fallTimer < 5) {
 				app.image(SCAD[0], posX, posY);
-			}else if(fallTimer >= 10 && fallTimer < 20) {
+			}else if(fallTimer >= 5 && fallTimer < 10) {
 				app.image(SCAD[1], posX, posY);
-			}else if(fallTimer >= 20 && fallTimer < 30) {
+			}else if(fallTimer >= 10 && fallTimer < 15) {
 				app.image(SCAD[2], posX, posY);
 			}
 		}
 		
 		fallTimer++;
 		
-		if(fallTimer>30) {
+		if(fallTimer>15) {
 			fallTimer = 0;
 			action = DEFAULT;
 		}
@@ -573,28 +573,28 @@ public class Player implements Runnable{
 	private void attackAnimationAzteck() {
 		
 		if(rightAn == false) {
-			if (attackTimer >= 0 && attackTimer < 10) {
+			if (attackTimer >= 0 && attackTimer < 5) {
 				app.image(AA[0], posX-40, posY-20);
-			}else if(attackTimer >= 10 && attackTimer < 20) {
+			}else if(attackTimer >= 5 && attackTimer < 10) {
 				app.image(AA[1], posX-40, posY-20);
-			}else if(attackTimer >= 20 && attackTimer < 30) {
+			}else if(attackTimer >= 10 && attackTimer < 15) {
 				app.image(AA[2], posX-40, posY-20);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (attackTimer >= 0 && attackTimer < 10) {
+			if (attackTimer >= 0 && attackTimer < 5) {
 				app.image(AAD[0], posX+40, posY-20);
-			}else if(attackTimer >= 10 && attackTimer < 20) {
+			}else if(attackTimer >= 5 && attackTimer < 10) {
 				app.image(AAD[1], posX+40, posY-20);
-			}else if(attackTimer >= 20 && attackTimer < 30) {
+			}else if(attackTimer >= 10 && attackTimer < 15) {
 				app.image(AAD[2], posX+40, posY-20);
 			}
 		}
 		
 		attackTimer++;
 		
-		if(attackTimer>30) {
+		if(attackTimer>15) {
 			attackTimer = 0;
 			action = DEFAULT;
 		}
@@ -603,28 +603,28 @@ public class Player implements Runnable{
 	private void attackAnimationPirate() {
 		
 		if(rightAn == false) {
-			if (attackTimer >= 0 && attackTimer < 10) {
+			if (attackTimer >= 0 && attackTimer < 5) {
 				app.image(PA[0], posX-60, posY-20);
-			}else if(attackTimer >= 10 && attackTimer < 20) {
+			}else if(attackTimer >= 5 && attackTimer < 10) {
 				app.image(PA[1], posX-60, posY-20);
-			}else if(attackTimer >= 20 && attackTimer < 30) {
+			}else if(attackTimer >= 10 && attackTimer < 15) {
 				app.image(PA[2], posX-60, posY-20);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (attackTimer >= 0 && attackTimer < 10) {
+			if (attackTimer >= 0 && attackTimer < 5) {
 				app.image(PAD[0], posX+60, posY-20);
-			}else if(attackTimer >= 10 && attackTimer < 20) {
+			}else if(attackTimer >= 5 && attackTimer < 10) {
 				app.image(PAD[1], posX+60, posY-20);
-			}else if(attackTimer >= 20 && attackTimer < 30) {
+			}else if(attackTimer >= 10 && attackTimer < 15) {
 				app.image(PAD[2], posX+60, posY-20);
 			}
 		}
 		
 		attackTimer++;
 		
-		if(attackTimer>30) {
+		if(attackTimer>15) {
 			attackTimer = 0;
 			action = DEFAULT;
 		}
@@ -633,28 +633,28 @@ public class Player implements Runnable{
 	private void attackAnimationSamurai() {
 		
 		if(rightAn == false) {
-			if (attackTimer >= 0 && attackTimer < 10) {
+			if (attackTimer >= 0 && attackTimer < 5) {
 				app.image(SA[0], posX-40, posY-20);
-			}else if(attackTimer >= 10 && attackTimer < 20) {
+			}else if(attackTimer >= 5 && attackTimer < 10) {
 				app.image(SA[1], posX-40, posY-20);
-			}else if(attackTimer >= 20 && attackTimer < 30) {
+			}else if(attackTimer >= 10 && attackTimer < 15) {
 				app.image(SA[2], posX-40, posY-20);
 			}
 		}
 		
 		if(rightAn == true) {
-			if (attackTimer >= 0 && attackTimer < 10) {
+			if (attackTimer >= 0 && attackTimer < 5) {
 				app.image(SAD[0], posX+40, posY-20);
-			}else if(attackTimer >= 10 && attackTimer < 20) {
+			}else if(attackTimer >= 5 && attackTimer < 10) {
 				app.image(SAD[1], posX+40, posY-20);
-			}else if(attackTimer >= 20 && attackTimer < 30) {
+			}else if(attackTimer >= 10 && attackTimer < 15) {
 				app.image(SAD[2], posX+40, posY-20);
 			}
 		}
 		
 		attackTimer++;
 		
-		if(attackTimer>30) {
+		if(attackTimer>15) {
 			attackTimer = 0;
 			action = DEFAULT;
 		}
