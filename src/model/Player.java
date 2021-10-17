@@ -61,6 +61,7 @@ public class Player implements Runnable{
 	
 	private PApplet app;
 	private int posX, posY;
+	private int health = 60;
 	
 	public Player(PApplet app, int posX, int posY) {
 		
@@ -670,6 +671,43 @@ public class Player implements Runnable{
 		}
 	}
 	
+		public void setHealth(int health) {
+			this.health = health;
+		}
+		
+		public int getHealth() {
+			return health;
+		}
+		
+		public void setAction(String action) {
+			this.action = action;
+		}
+		
+		public Boolean getRightAn() {
+			return rightAn;
+		}
+		
+		public void setRightAn(Boolean rightAn) {
+			this.rightAn = rightAn;
+		}
+		
+		public int getPosY() {
+			return posY;
+		}
+		
+	public int getPosX() {
+		return posX;
+	}
 	
+	public void setPosX(int posX) {
+		this.posX = posX;
+	}
+	
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+	public String getAction() {
+		return action;
+	}
 
 }

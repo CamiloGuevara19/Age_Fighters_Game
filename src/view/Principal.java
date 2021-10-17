@@ -58,6 +58,7 @@ public class Principal extends PApplet{
 		
 		player1 = new Player(this, 200, 620);
 		player2 = new Player(this, 1100, 620);
+		player2.setRightAn(false);
 
 		gameScreen = (int) random(3); // random for random map
 
@@ -119,6 +120,74 @@ public class Principal extends PApplet{
 			player1.draw(p1C);
 			player2.draw(p2C);
 			
+			//animaciones
+			
+			//ataque
+			if(accion.equals("1:pink")) {
+				player1.setAction("ATTACK");
+			}
+			
+			if(accion.equals("2:pink")) {
+				player2.setAction("ATTACK");
+			}
+			
+			//bloqueo
+			
+			if(accion.equals("1:blue")) {
+				player1.setAction("BLOCK");
+			}
+			
+			if(accion.equals("2:blue")) {
+				player2.setAction("BLOCK");
+			}
+			
+			//caminar 
+			
+			if(accion.equals("1:right")) {
+				player1.setRightAn(true);
+				player1.setAction("WALK");
+			}
+			
+			if(accion.equals("1:left")) {
+				player1.setRightAn(false);
+				player1.setAction("WALK");
+			}
+			
+			if(accion.equals("2:right")) {
+				player2.setRightAn(true);
+				player2.setAction("WALK");
+			}
+			
+			if(accion.equals("2:left")) {
+				player2.setRightAn(false);
+				player2.setAction("WALK");
+			}
+			
+			//saltar
+		
+			if(accion.equals("1:up")) {
+				player1.setAction("JUMP");
+			}
+			
+			if(accion.equals("2:up")&&!player2.getAction().equals("FALL")) {
+				player2.setAction("JUMP");
+			}
+			
+			//caer
+			
+			//logica
+			
+			gravedad(player1);
+			gravedad(player2);
+			
+			
+			
+					
+					
+				
+				
+			
+			
 			if(gameOver==true) {
 				if(accion.equals("1:pink")) {player1ok=true;}
 				if(accion.equals("2:pink")) {player2ok=true;}
@@ -138,6 +207,48 @@ public class Principal extends PApplet{
 		
 	}
 
+	
+	private void gravedad(Player player) {
+		//tocar con el piso p1
+		if(player.getPosY()<620) {
+			 
+		//tocar con plataformas abajo p1	
+			if(player.getPosY()<=429&&player.getPosY()>=425) {
+				
+				if(player.getPosX()<125||player.getPosX()>1155) {
+					if(!player.getAction().equals("JUMP")) {
+					player.setAction("FALL");
+					player.setPosY(player.getPosY()-3);}}
+					else{
+						if(player.getPosX()>615&&player.getPosX()<665) {
+							if(!player.getAction().equals("JUMP")) {
+							player.setAction("FALL");
+							player.setPosY(player.getPosY()-3);}
+						}
+						
+					}
+					
+				}
+			
+			else {
+					
+				//tocar con la plataforma2
+				if(player.getPosY()>223&&player.getPosY()<227) {
+					
+					if(player.getPosX()<395||player.getPosX()>885) {
+						if(!player.getAction().equals("JUMP")) {
+						player.setAction("FALL");
+						player.setPosY(player.getPosY()-3);}
+					}
+				}
+				}
+			
+		}
+	}
+	
+	
+	
+	
 	@Override
 	public void keyPressed() {
 		
