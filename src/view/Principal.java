@@ -56,10 +56,7 @@ public class Principal extends PApplet{
 		
 		player1ok = false;
 		player2ok = false;
-	
-		
-		
-		
+
 		player1 = new Player(this, 200, 100);
 		player2 = new Player(this, 1100, 100);
 		player2.setRightAn(false);
@@ -110,17 +107,9 @@ public class Principal extends PApplet{
 			rect(549, 26,-(400-(player1.getHealth()*5) ), 50);
 			rect(730, 26,(400-(player2.getHealth()*5) ), 50);
 			
-			
-			
-			
-		
-			
-		
-			
 			//logica
 			
 			//caer
-			
 			
 			//salud
 			if(player1.getHealth()<0) {
@@ -145,12 +134,6 @@ public class Principal extends PApplet{
 				rect(0, 0, 1280, 720);
 				image(pinktext3, 640, 360, 400, 50);
 			}
-			
-		
-			
-				
-				
-			
 		
 			break;
 		default:
@@ -164,14 +147,10 @@ public class Principal extends PApplet{
 		player1 = new Player(this, 200, 620);
 		player2 = new Player(this, 1100, 620);
 		player2.setRightAn(false);
-		gameOver = false;
-		
-		
+		gameOver = false;	
 		
 	}
 
-	
-	
 	@Override
 	public void mousePressed() {
 		
@@ -205,7 +184,7 @@ public class Principal extends PApplet{
 
 	public void msgRecibido(int id, String msg,Session s) {
 		accion = id + ":" + msg;
-switch (screen) {
+		switch (screen) {
 		
 		
 		case 0:
