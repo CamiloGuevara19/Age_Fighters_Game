@@ -574,21 +574,21 @@ public class Player implements Runnable{
 		
 		if(rightAn == false) {
 			if (attackTimer >= 0 && attackTimer < 10) {
-				app.image(AA[0], posX, posY);
+				app.image(AA[0], posX-100, posY-50);
 			}else if(attackTimer >= 10 && attackTimer < 20) {
-				app.image(AA[1], posX, posY);
+				app.image(AA[1], posX-100, posY-50);
 			}else if(attackTimer >= 20 && attackTimer < 30) {
-				app.image(AA[2], posX, posY);
+				app.image(AA[2], posX-100, posY-50);
 			}
 		}
 		
 		if(rightAn == true) {
 			if (attackTimer >= 0 && attackTimer < 10) {
-				app.image(AAD[0], posX, posY);
+				app.image(AAD[0], posX+100, posY-50);
 			}else if(attackTimer >= 10 && attackTimer < 20) {
-				app.image(AAD[1], posX, posY);
+				app.image(AAD[1], posX+100, posY-50);
 			}else if(attackTimer >= 20 && attackTimer < 30) {
-				app.image(AAD[2], posX, posY);
+				app.image(AAD[2], posX+100, posY-50);
 			}
 		}
 		
@@ -604,21 +604,21 @@ public class Player implements Runnable{
 		
 		if(rightAn == false) {
 			if (attackTimer >= 0 && attackTimer < 10) {
-				app.image(PA[0], posX, posY);
+				app.image(PA[0], posX-100, posY-50);
 			}else if(attackTimer >= 10 && attackTimer < 20) {
-				app.image(PA[1], posX, posY);
+				app.image(PA[1], posX-100, posY-50);
 			}else if(attackTimer >= 20 && attackTimer < 30) {
-				app.image(PA[2], posX, posY);
+				app.image(PA[2], posX-100, posY-50);
 			}
 		}
 		
 		if(rightAn == true) {
 			if (attackTimer >= 0 && attackTimer < 10) {
-				app.image(PAD[0], posX, posY);
+				app.image(PAD[0], posX+100, posY-50);
 			}else if(attackTimer >= 10 && attackTimer < 20) {
-				app.image(PAD[1], posX, posY);
+				app.image(PAD[1], posX+100, posY-50);
 			}else if(attackTimer >= 20 && attackTimer < 30) {
-				app.image(PAD[2], posX, posY);
+				app.image(PAD[2], posX+100, posY-50);
 			}
 		}
 		
@@ -634,21 +634,21 @@ public class Player implements Runnable{
 		
 		if(rightAn == false) {
 			if (attackTimer >= 0 && attackTimer < 10) {
-				app.image(SA[0], posX, posY);
+				app.image(SA[0], posX-100, posY-50);
 			}else if(attackTimer >= 10 && attackTimer < 20) {
-				app.image(SA[1], posX, posY);
+				app.image(SA[1], posX-100, posY-50);
 			}else if(attackTimer >= 20 && attackTimer < 30) {
-				app.image(SA[2], posX, posY);
+				app.image(SA[2], posX-100, posY-50);
 			}
 		}
 		
 		if(rightAn == true) {
 			if (attackTimer >= 0 && attackTimer < 10) {
-				app.image(SAD[0], posX, posY);
+				app.image(SAD[0], posX+100, posY-50);
 			}else if(attackTimer >= 10 && attackTimer < 20) {
-				app.image(SAD[1], posX, posY);
+				app.image(SAD[1], posX+100, posY-50);
 			}else if(attackTimer >= 20 && attackTimer < 30) {
-				app.image(SAD[2], posX, posY);
+				app.image(SAD[2], posX+100, posY-50);
 			}
 		}
 		
