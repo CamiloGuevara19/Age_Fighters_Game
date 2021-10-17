@@ -18,7 +18,7 @@ public class IntroScreen {
 		
 		app.rectMode(app.CENTER);
 		app.rect(640, 568, 110, 100);
-		app.image(introscreen, 0, 0);
+		app.image(introscreen, 640, 360);
 	}
 
 }

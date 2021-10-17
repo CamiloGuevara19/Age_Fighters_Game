@@ -18,7 +18,7 @@ public class StartScreen {
 		
 		app.rectMode(app.CENTER);
 		app.rect(621, 543, 209, 100);
-		app.image(startScreen, 0, 0);
+		app.image(startScreen, 640, 360);
 	}
 
 }

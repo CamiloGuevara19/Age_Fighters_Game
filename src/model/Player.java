@@ -139,10 +139,10 @@ public class Player implements Runnable{
 			case WALK:
 				walkAnimationSamurai();
 				if(rightAn == true) {
-					posX -=4;
+					posX +=4;
 				}
 				if(rightAn == false) {
-					posX +=4;
+					posX -=4;
 				}
 				break;
 			case ATTACK:
@@ -184,10 +184,10 @@ public class Player implements Runnable{
 			case WALK:
 				walkAnimationPirate();
 				if(rightAn == true) {
-					posX -=4;
+					posX +=4;
 				}
 				if(rightAn == false) {
-					posX +=4;
+					posX -=4;
 				}
 				break;
 			case ATTACK:
@@ -229,10 +229,10 @@ public class Player implements Runnable{
 			case WALK:
 				walkAnimationAzteck();
 				if(rightAn == true) {
-					posX -=4;
+					posX +=4;
 				}
 				if(rightAn == false) {
-					posX +=4;
+					posX -=4;
 				}
 				break;
 			case ATTACK:

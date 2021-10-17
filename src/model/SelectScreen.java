@@ -18,7 +18,7 @@ public class SelectScreen {
 		
 		app.rectMode(app.CENTER);
 		app.rect(640, 568, 110, 100);
-		app.image(selectScreen, 0, 0);
+		app.image(selectScreen, 640, 360);
 	}
 
 }

@@ -26,13 +26,13 @@ public class GameScreen {
 		
 		switch (GameScreen) {
 		case 0:
-			app.image(temple, 0, 0);
+			app.image(temple, 640, 360);
 			break;
 		case 1:
-			app.image(ship, 0, 0);
+			app.image(ship, 640, 360);
 			break;
 		case 2:
-			app.image(pyramid, 0, 0);
+			app.image(pyramid, 640, 360);
 			break;
 
 		default:
