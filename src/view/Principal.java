@@ -190,7 +190,7 @@ public class Principal extends PApplet{
 		case 0:
 			if(accion.equals("1:pink")) {player1ok=true;}
 			if(accion.equals("2:pink")) {player2ok=true;}
-			if(player1ok==true) {
+			if(player1ok==true && player2ok == true) {
 				screen=1;
 				player1ok=false; 
 				player2ok=false;}
@@ -211,7 +211,7 @@ public class Principal extends PApplet{
 			 //continuar
 				if(accion.equals("1:pink")) {player1ok=true;}
 				if(accion.equals("2:pink")) {player2ok=true;}
-				if(player1ok==true) {
+				if(player1ok==true  && player2ok == true) {
 					screen=2;
 					player1ok=false; 
 					player2ok=false;}
@@ -219,7 +219,7 @@ public class Principal extends PApplet{
 		case 2:
 			if(accion.equals("1:pink")) {player1ok=true;}
 			if(accion.equals("2:pink")) {player2ok=true;}
-			if(player1ok==true) {
+			if(player1ok==true  && player2ok == true) {
 				screen=3;
 				player1ok=false; 
 				player2ok=false;}
@@ -291,7 +291,7 @@ public class Principal extends PApplet{
 				s.sendMsg(ganador(id));
 				if(accion.equals("1:pink")) {player1ok=true;}
 				if(accion.equals("2:pink")) {player2ok=true;}
-				if(player1ok==true) {
+				if(player1ok==true  && player2ok == true) {
 					reset();
 					player1ok=false; 
 					player2ok=false;}
