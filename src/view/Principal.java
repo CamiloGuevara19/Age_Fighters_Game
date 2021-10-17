@@ -60,8 +60,8 @@ public class Principal extends PApplet{
 		p2jump = false;
 		
 		
-		player1 = new Player(this, 200, 620);
-		player2 = new Player(this, 1100, 620);
+		player1 = new Player(this, 200, 100);
+		player2 = new Player(this, 1100, 100);
 		player2.setRightAn(false);
 		
 		accion="no conectado";
@@ -78,7 +78,6 @@ public class Principal extends PApplet{
 		background(255);	
 		
 		
-		System.out.println(accion);
 		
 		
 		switch (screen) {
@@ -117,8 +116,8 @@ public class Principal extends PApplet{
 			//logica
 			
 			//caer
-			gravedad(player1,p1caer,p1jump);
-			gravedad(player2,p2caer,p2jump);
+			//gravedad(player1,p1caer,p1jump);
+			//gravedad(player2,p2caer,p2jump);
 			
 			
 			
@@ -149,54 +148,48 @@ public class Principal extends PApplet{
 
 	
 	private void gravedad(Player player,boolean caer, boolean playerJump) {
-		if(playerJump==false) {
+	
 		//colisiones
-		if(player.getPosY()<620) {
-		if(player.getPosY()>620) {
-			caer =false;
-		}else {
-			
-			//primera pltarforma
-			if(player.getPosX()>125&&player.getPosX()<615) {
-				if(player.getPosY()>=450&&player.getPosY()>=425) {
-					if(!accion.equals("down")) {
-					caer = false;}
-				}
-			}else {
-			
-			//segunda pltaforma
-				if(player.getPosX()>665&&player.getPosX()<615) {
-					if(player.getPosY()>=450&&player.getPosY()>=425) {
-						if(!accion.equals("down")) {
-							caer = false;}
-					}
-				}else {
-					//tercera pltaforma
-					if(player.getPosX()>395&&player.getPosX()<885) {
-						if(player.getPosY()>=248&&player.getPosY()>=223) {
-							if(!accion.equals("down")) {
-								caer = false;}}}
-					else {
-								caer = true;	
-								}
-					
-				}
-			}
-				
-			
-		}
+	
+		
+		
+		
 		if(caer = true) {
 			player.setAction("FALL");
 			player.setPosY(player.getPosY()+3);
 		}else {
 			player.setPosY(player.getPosY());
-		}}
+		}
+		
+		
 		if(player.getPosY()>620) {
 			player.setPosY(623);
-		}}
+			caer = true;
+		}
+		
+		//segunda pltaforma
+		if(player.getPosX()>665&&player.getPosX()<615) {
+			if(player.getPosY()>=450) {
+				if(!accion.equals("down")) {
+					caer = false;}
+			}
+		}
 		
 		
+		//tercera pltaforma
+		if(player.getPosX()>395&&player.getPosX()<885) {
+			if(player.getPosY()>=223) {
+				if(!accion.equals("down")) {
+					caer = false;}}}
 		
+		
+		//primera pltarforma
+		if(player.getPosX()>125&&player.getPosX()<615) {
+			if(player.getPosY()>=450) {
+				if(!accion.equals("down")) {
+				caer = false;}
+			}
+		}
 		
 		
 		System.out.print(caer);
