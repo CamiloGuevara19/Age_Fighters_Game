@@ -30,7 +30,7 @@ public class TCPLauncher extends Thread{
     public void run() {
         
         	try {
-				server = new ServerSocket(5000);
+				server = new ServerSocket(8080);
 				id = 1;
 				while(true) {
 				System.out.println("Esperando...");
